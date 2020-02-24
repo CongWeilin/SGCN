@@ -1,5 +1,4 @@
 from utils import *
-from partition_utils import partition_graph
 
 def fastgcn_sampler(seed, batch_nodes, samp_num_list, num_nodes, lap_matrix, lap_matrix_sq, depth):    
     np.random.seed(seed)
