@@ -1,6 +1,6 @@
 # SGCN
 
-Open-sourced implementation for ICML20 paper (5830) "On the Importance of Sampling in Learning Graph Convolutional Networks: 
+Open-sourced implementation for "On the Importance of Sampling in Learning Graph Convolutional Networks: 
 Convergence Analysis and Variance Reduction".
 
 ## Setup
