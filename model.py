@@ -1,7 +1,19 @@
 from utils import *
-from layers import GraphConvolution
+# from layers import GraphConvolution
 
+class GraphConvolution(nn.Module):
+    def __init__(self, n_in, n_out, bias=True):
+        super(GraphConvolution, self).__init__()
+        self.n_in = n_in
+        self.n_out = n_out
+        self.linear = nn.Linear(n_in, n_out)
 
+    def forward(self, x, adj):
+        support = self.linear(x)
+        output = torch.spmm(adj, support)
+        return output
+
+    
 class GCN(nn.Module):
     def __init__(self, nfeat, nhid, num_classes, layers, dropout):
         super(GCN, self).__init__()
