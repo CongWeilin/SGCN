@@ -32,7 +32,7 @@ SGCN++ (first-order only variance reduction) wrapper
 def sgcn_first(net, optimizer, feat_data, labels,
                 train_nodes, valid_nodes,
                 adjs_full, input_nodes_full, output_nodes_full, sampled_nodes_full,
-                train_data, inner_loop_num, device, dist_bound=5e-3, calculate_grad_vars=False):
+                train_data, inner_loop_num, device, dist_bound=0.1, calculate_grad_vars=False):
     """
     args : net, optimizer, train_loader, test_loader, loss function, number of inner epochs, args
     return : train_loss, test_loss, grad_norm_lb
@@ -375,7 +375,8 @@ def sgcn_doubly(net, optimizer, feat_data, labels,
 
             # make sure the aggregated hiddens not too far
             current_hiddens = copy.deepcopy(forward_wrapper.hiddens)
-            dist = (current_hiddens-initial_hiddens).abs().mean()
+            # dist = (current_hiddens-initial_hiddens).abs().mean()
+            dist = current_hiddens.norm(2) / initial_hiddens.norm(2) - 1
             if dist > dist_bound:
                 print("RETO >>>")
                 run_snapshot = True
@@ -466,7 +467,8 @@ def sgcn_zeroth(net, optimizer, feat_data, labels,
 
             # make sure the aggregated hiddens not too far
             current_hiddens = copy.deepcopy(forward_wrapper.hiddens)
-            dist = (current_hiddens-initial_hiddens).abs().mean()
+            # dist = (current_hiddens-initial_hiddens).abs().mean()
+            dist = current_hiddens.norm(2) / initial_hiddens.norm(2) - 1
             if dist > dist_bound:
                 run_snapshot = True
                 print("RETO >>>")

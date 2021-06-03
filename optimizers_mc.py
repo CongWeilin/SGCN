@@ -375,7 +375,8 @@ def sgcn_doubly(net, optimizer, feat_data, labels,
 
             # make sure the aggregated hiddens not too far
             current_hiddens = copy.deepcopy(forward_wrapper.hiddens)
-            dist = (current_hiddens-initial_hiddens).abs().mean()
+            # dist = (current_hiddens-initial_hiddens).abs().mean()
+            dist = current_hiddens.norm(2) / initial_hiddens.norm(2) - 1
             if dist > dist_bound:
                 print("RETO >>>", dist, dist_bound)
                 run_snapshot = True
@@ -466,7 +467,8 @@ def sgcn_zeroth(net, optimizer, feat_data, labels,
 
             # make sure the aggregated hiddens not too far
             current_hiddens = copy.deepcopy(forward_wrapper.hiddens)
-            dist = (current_hiddens-initial_hiddens).abs().mean()
+            # dist = (current_hiddens-initial_hiddens).abs().mean()
+            dist = current_hiddens.norm(2) / initial_hiddens.norm(2) - 1
             if dist > dist_bound:
                 run_snapshot = True
                 print("RETO >>>")
