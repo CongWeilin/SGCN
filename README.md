@@ -14,7 +14,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
   
-Experiments are produced on Pubmed, Flickr, Reddit, and PPi dataset. Dataset can be download from [Google drive](https://drive.google.com/drive/folders/1wW8JwNkPbXZuv1gD4E3BAQ3CHBdqtEqm?usp=sharing).
+Experiments are produced on Pubmed, Flickr, Reddit, and PPi dataset. Dataset can be download from [Google drive](https://drive.google.com/drive/folders/15eP7OHiHQUnDrHKYh1YPxXkiqGoJhbis) and located inside `./data/` folder.
 
 ## Usage
 Execute the following scripts (`run_experiments.sh`) to reproduce the result in the paper. 
